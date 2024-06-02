@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* Warna latar belakang abu-abu terang */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff; /* Warna latar belakang putih */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Bayangan tipis */
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.title {
+    color: #333; /* Warna teks abu-abu gelap */
+    text-align: center;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+form {
+    width: 70%;
+    margin: 0 auto;
+}
+
+label {
+    font-weight: bold;
+    color: #555; /* Warna teks abu-abu */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="domisili"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Warna border abu-abu */
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Warna tombol hijau */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Warna tombol hijau gelap saat disorot */
+}
