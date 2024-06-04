@@ -131,7 +131,7 @@ if (!isset($_SESSION['username']) || $_SESSION['level'] != "user") {
             <div class="search-results">
                 <?php
                 // Menyertakan file koneksi database
-                include '../user/koneksi.php';
+                include 'koneksi.php';
 
                 // Memastikan koneksi berhasil
                 if (!$mysqli) {
@@ -141,12 +141,11 @@ if (!isset($_SESSION['username']) || $_SESSION['level'] != "user") {
                 if (isset($_POST['submit'])) {
                     $search = $mysqli->real_escape_string($_POST['search']);
                     $query = "
-                        SELECT paket.resi, pengirim.nama AS nama_pengirim, penerima.nama AS nama_penerima, layanan.jenis_layanan, paket.tanggal, paket.status, layanan.hargaperkg, paket.bobotkg, (layanan.hargaperkg * paket.bobotkg) AS total_harga
+                        SELECT paket.resi, pengirim.nama AS nama_pengirim, paket.nama_penerima AS nama_penerima, paket.alamat, paket.status
                         FROM paket
-                        JOIN pengirim ON paket.id_pengirim = pengirim.id_pengirim
-                        JOIN penerima ON paket.id_penerima = penerima.id_penerima
-                        JOIN layanan ON paket.id_layanan = layanan.id_layanan
-                        WHERE paket.resi LIKE '%$search%' OR pengirim.nama LIKE '%$search%' OR penerima.nama LIKE '%$search%' OR layanan.jenis_layanan LIKE '%$search%'";
+                        JOIN user AS pengirim ON paket.id_user = pengirim.id_user
+                        JOIN paket AS penerima ON paket.nama_penerima = paket.nama_penerima
+                        WHERE paket.resi LIKE '%$search%'";
                     $result = $mysqli->query($query);
 
                     // Tambahkan pengecekan apakah query berhasil dijalankan
@@ -157,12 +156,8 @@ if (!isset($_SESSION['username']) || $_SESSION['level'] != "user") {
                                         <h3>Resi: " . htmlspecialchars($row['resi']) . "</h3>
                                         <p>Nama Pengirim: " . htmlspecialchars($row['nama_pengirim']) . "</p>
                                         <p>Nama Penerima: " . htmlspecialchars($row['nama_penerima']) . "</p>
-                                        <p>Jenis Layanan: " . htmlspecialchars($row['jenis_layanan']) . "</p>
-                                        <p>Tanggal: " . htmlspecialchars($row['tanggal']) . "</p>
+                                        <p>Alamat: " . htmlspecialchars($row['alamat']) . "</p>
                                         <p>Status: " . htmlspecialchars($row['status']) . "</p>
-                                        <p>Harga per KG: Rp. " . number_format($row['hargaperkg'], 2, ',', '.') . "</p>
-                                        <p>Bobot (KG): " . htmlspecialchars($row['bobotkg']) . "</p>
-                                        <p>Total Harga: Rp. " . number_format($row['total_harga'], 2, ',', '.') . "</p>
                                       </div>";
                             }
                         } else {
