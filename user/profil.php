@@ -29,7 +29,7 @@ if ($result && $result->num_rows > 0) {
 // Fungsi untuk logout
 if (isset($_POST['logout'])) {
     session_destroy();
-    header("Location: ../login");
+    header("Location: ../index.php");
     exit();
 }
 ?>

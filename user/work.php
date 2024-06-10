@@ -20,6 +20,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         nav ul {
             list-style-type: none;
@@ -33,6 +34,7 @@
         nav ul li a {
             color: black;
             text-decoration: none;
+            font-weight: bold;
         }
         .hero {
             background-color: grey;
@@ -45,16 +47,34 @@
         }
         .hero h1 {
             font-size: 3em;
-            padding-top: 50px;
         }
         .advantages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .advantage {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.2s;
+        }
+        .advantage:hover {
+            transform: scale(1.05);
         }
         .advantage h3 {
             text-align: left;
+            margin-bottom: 10px;
         }
         .advantage p {
             text-align: left;
+            margin-bottom: 10px;
+            color: #555;
         }
         footer {
             background-color: #333;
